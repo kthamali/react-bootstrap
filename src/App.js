@@ -4,6 +4,7 @@ import './App.css';
 import { Button, Form, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+//Calculate the avarage
 const calculateAverage = (grades) => {
 const sum = grades.reduce((total, grade) => total + parseFloat(grade), 0);
 return (sum / grades.length).toFixed(3);
@@ -14,7 +15,7 @@ const App = () => {
 const [students, setStudents] = useState([]);
 const [filteredStudents, setFilteredStudents] = useState([]);
 
-
+//API call to retreive students data
 useEffect(() => {
   const fetchData = async () => {
     try {
@@ -28,6 +29,7 @@ useEffect(() => {
   fetchData();
 }, []);
 
+//Students filtering according to the name
 function handleStudents(event) {
     const searchText = event.target.value.toLowerCase();
     const filteredStudents = students.filter((student) => {
